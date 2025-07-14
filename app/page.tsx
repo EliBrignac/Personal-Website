@@ -956,7 +956,7 @@ particle.update(canvas.width, canvas.height);
                         </div>
                         <div className="bg-slate-800/30 rounded-lg border border-slate-700/50 overflow-hidden">
                           <div className="grid grid-cols-12 text-xs text-slate-400 p-3 border-b border-slate-700/50 bg-slate-800/50">
-                            <div className="col-span-1">ID</div>
+                            <div className="col-span-1 ">ID</div>
                             <div className="col-span-4">Project Name</div>
                             <div className="col-span-2">Significance</div>
                             <div className="col-span-2">Progress</div>
@@ -2008,7 +2008,7 @@ function ProjectRow({
 }: { id: string; name: string; status: string; progress: number; lastUpdate: string; link: string }) {
   return (
     <div className="grid grid-cols-12 items-center p-2 hover:bg-slate-800/30 transition-colors text-xs sm:text-sm">
-      <div className="col-span-1 text-center">{id}</div>
+      <div className="col-span-1 text-center text-slate-400">{id}</div>
       <div className="col-span-4 font-medium text-slate-200 truncate pr-2">{name}</div>
       <div className="col-span-2 truncate">{status}</div>
       <div className="col-span-2">
