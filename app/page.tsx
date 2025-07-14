@@ -481,17 +481,10 @@ particle.update(canvas.width, canvas.height);
           </div>
 
           <div className="flex items-center space-x-6">
-            <div className="hidden md:flex items-center space-x-1 bg-slate-800/50 rounded-full px-3 py-1.5 border border-slate-700/50 backdrop-blur-sm">
-              <Search className="h-4 w-4 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search projects or posts..."
-                className="bg-transparent border-none focus:outline-none text-sm w-40 placeholder:text-slate-500"
-              />
-            </div>
+
 
             <div className="flex items-center space-x-3">
-              <TooltipProvider>
+              {/* <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon" className="relative text-slate-400 hover:text-slate-100">
@@ -503,8 +496,8 @@ particle.update(canvas.width, canvas.height);
                     <p>Notifications</p>
                   </TooltipContent>
                 </Tooltip>
-              </TooltipProvider>
-
+              </TooltipProvider> */}
+{/* 
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -521,7 +514,7 @@ particle.update(canvas.width, canvas.height);
                     <p>Toggle theme</p>
                   </TooltipContent>
                 </Tooltip>
-              </TooltipProvider>
+              </TooltipProvider> */}
             </div>
           </div>
         </header>
@@ -586,9 +579,8 @@ particle.update(canvas.width, canvas.height);
                     </div>
 
                     <div className="text-sm text-slate-300 leading-relaxed mb-4">
-                      Recent Graduate from the University of Delaware who enjoys working on meaningful Data Science projects.
-                      Has a strong background in Data Science and Machine Learning, and is passionate about contributing
-                      to the worlds most interesting problems.
+                      Recent Graduate from the University of Delaware who is passionate about contributing
+                      to the worlds most interesting problems. Strong background in Data Science and Machine Learning.
                     </div>
                     <div className="text-sm text-slate-400 leading-relaxed mb-4">
                       Always eager to learn new technologies and collaborate with others :)
@@ -613,8 +605,16 @@ particle.update(canvas.width, canvas.height);
                         NumPy
                       </Badge>
                       <Badge variant="secondary" className="bg-slate-800/50 text-pink-400 border-pink-500/30 text-xs">
+                        Scikit-Learn
+                      </Badge>
+                      <Badge variant="secondary" className="bg-slate-800/50 text-cyan-400 border-cyan-500/30 text-xs">
                         Tableau
                       </Badge>
+                      <Badge variant="secondary" className="bg-slate-800/50 text-purple-400 border-purple-500/30 text-xs">
+                        Git
+                      </Badge>
+
+                      
                     </div>
                     <div className="grid grid-cols-1 gap-2">
                       <div className="bg-slate-800/50 rounded-md p-3 border border-slate-700/50 text-center">
@@ -972,7 +972,7 @@ particle.update(canvas.width, canvas.height);
                               name="Podcast Prediction"
                               status="Kaggle Competition"
                               progress={100}
-                              lastUpdate="April 2025"
+                              lastUpdate="Apr 2025"
                               link="https://www.kaggle.com/competitions/playground-series-s5e4/overview"
                             />
                             <ProjectRow
@@ -1004,7 +1004,7 @@ particle.update(canvas.width, canvas.height);
                               name="Concept Art Creator"
                               status="Personal Project"
                               progress={100}
-                              lastUpdate="Sept  2023"
+                              lastUpdate="Sep 2023"
                               link="https://github.com/EliBrignac/Destiny_Weapon_Maker"
                             />
                             <ProjectRow
@@ -1012,7 +1012,7 @@ particle.update(canvas.width, canvas.height);
                               name="MMASD"
                               status="Publication"
                               progress={100}
-                              lastUpdate="Oct  2023"
+                              lastUpdate="Oct 2023"
                               link="https://dl.acm.org/doi/10.1145/3577190.3614117"
                             />
                             <ProjectRow
@@ -1020,7 +1020,7 @@ particle.update(canvas.width, canvas.height);
                               name="Malignancy Classifier"
                               status="Personal Project"
                               progress={100}
-                              lastUpdate="May 20, 2023"
+                              lastUpdate="May 2023"
                               link="https://github.com/EliBrignac/Malignancy_Classifier"
                             />
                             
@@ -1155,7 +1155,21 @@ particle.update(canvas.width, canvas.height);
                             Technologies
                           </h3>
                         </div>
-                          <div className="grid grid-cols-1 md:grid-cols-1 gap-4 ml-4 mr-4">                          
+                          <div className="grid grid-cols-1 md:grid-cols-1 gap-4 ml-4 mr-4">         
+                          <MyStatusItem label="Python" value={100} color="cyan" />
+                          <MyStatusItem label="SQL" value={89} color="purple" />
+                          <MyStatusItem label="PyTorch" value={87} color="pink" />
+                          <MyStatusItem label="Scikit-learn" value={95} color="rose" />
+                          <MyStatusItem label="Pandas" value={95} color="green" />
+                          <MyStatusItem label="NumPy" value={90} color="amber" />
+                          <MyStatusItem label="Git" value={99} color="blue" />
+                          <MyStatusItem label="Tableau" value={78} color="cyan" />
+                          <MyStatusItem label="C++" value={69} color="purple" />
+                          <MyStatusItem label="Java" value={63} color="amber" />
+                          <MyStatusItem label="Slurm" value={47} color="rose" />
+                          <MyStatusItem label="Matplotlib" value={100} color="green" />
+                          <MyStatusItem label="LangChain" value={74} color="cyan" />
+{/*                                       
                             <TechnologyItem name="Python" experience="5 yrs" proficiency={100} color="bg-gradient-to-r from-cyan-500 to-cyan-500" />
                             <TechnologyItem name="SQL" experience="2 yrs" proficiency={89} color="bg-purple-500" />
                             <TechnologyItem name="PyTorch" experience="1.5 yrs" proficiency={87} color="bg-pink-500"/>
@@ -1168,7 +1182,7 @@ particle.update(canvas.width, canvas.height);
                             <TechnologyItem name="Java" experience="1 yr" proficiency={63} color="bg-amber-500"/>
                             <TechnologyItem name="Slurm" experience="0.5 yr" proficiency={47} color="bg-rose-500"/>
                             <TechnologyItem name="Matplotlib" experience="2 yr" proficiency={100} color="bg-green-500"/>
-                            <TechnologyItem name="LangChain" experience="0.8 yr" proficiency={74} color="bg-cyan-500"/>
+                            <TechnologyItem name="LangChain" experience="0.8 yr" proficiency={74} color="bg-cyan-500"/> */}
                         </div>
                       </div>
                       
@@ -1402,6 +1416,21 @@ particle.update(canvas.width, canvas.height);
 
 
 
+                          
+                          <div className="bg-slate-800/50 rounded-md p-3 border border-slate-700/50 hover:border-slate-600/70 transition-colors">
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <div className="text-sm font-medium text-slate-200">Linear Algebra</div>
+                                <div className="text-xs text-slate-400 mt-1">University of Delaware</div>
+                              </div>
+                              <div className="text-right">
+                                <div className="text-sm font-medium text-slate-300">A</div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
                         </div>
                       </div>
             </Card>
@@ -1432,13 +1461,27 @@ function MyStatusItem({ label, value, color }: { label: string; value: number; c
   const getGradient = (color: string) => {
     switch (color) {
       case "cyan":
-        return "from-cyan-500 to-blue-500"
+        return "from-cyan-500 to-cyan-500"
       case "green":
-        return "from-green-500 to-emerald-500"
+        return "from-green-500 to-green-500"
       case "blue":
-        return "from-blue-500 to-indigo-500"
+        return "from-blue-500 to-blue-500"
       case "purple":
-        return "from-purple-500 to-pink-500"
+        return "from-purple-500 to-purple-500"
+      case "rose":
+        return "from-rose-500 to-rose-500"
+      case "amber":
+        return "from-amber-500 to-amber-500"
+      case "emerald":
+        return "from-emerald-500 to-emerald-500"
+      case "indigo":
+        return "from-indigo-500 to-indigo-500"
+      case "orange":
+        return "from-orange-500 to-orange-500"
+      case "yellow":
+        return "from-yellow-500 to-yellow-500"
+      case "pink":
+        return "from-pink-500 to-pink-500"
       default:
         return "from-slate-500 to-slate-400"
     }
@@ -1486,6 +1529,18 @@ function SkillMetricCard({
         return "from-blue-500 to-indigo-500 border-blue-500/30"
       case "purple":
         return "from-purple-500 to-pink-500 border-purple-500/30"
+      case "rose":
+        return "from-rose-500 to-pink-500 border-rose-500/30"
+      case "amber":
+        return "from-amber-500 to-pink-500 border-amber-500/30"
+      case "emerald":
+        return "from-emerald-500 to-pink-500 border-emerald-500/30"
+      case "indigo":
+        return "from-indigo-500 to-pink-500 border-indigo-500/30"
+      case "orange":
+        return "from-orange-500 to-pink-500 border-orange-500/30"
+      case "yellow":
+        return "from-yellow-500 to-pink-500 border-yellow-500/30"
       default:
         return "from-cyan-500 to-blue-500 border-cyan-500/30"
     }
@@ -1952,9 +2007,20 @@ function ProjectRow({
       <div className="col-span-4 font-medium text-slate-200">{name}</div>
       <div className="col-span-2">{status}</div>
       <div className="col-span-2">
-        <div className="flex items-center space-x-2">
-          <Progress value={progress} className="h-2 w-16" />
-          <span className="text-slate-400 mr-2">{progress}%</span>
+        <div className="flex items-center space-x-2 ml-2">
+          {progress < 50 ? (
+            <Badge variant="outline" className="bg-slate-800/50 text-red-400 border-red-500/50 text-xs">
+              {progress}%
+            </Badge>
+          ) : progress < 100 ? (
+            <Badge variant="outline" className="bg-slate-800/50 text-yellow-400 border-yellow-500/50 text-xs">
+              {progress}%
+            </Badge>
+          ) : (
+            <Badge variant="outline" className="bg-slate-800/50 text-green-400 border-green-500/50 text-xs">
+              {progress}%
+            </Badge>
+          )}
         </div>
       </div>
       <div className="col-span-2">{lastUpdate}</div>
