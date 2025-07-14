@@ -265,12 +265,11 @@ export default function PersonalDashboard() {
         if (this.y < 0) this.y = height;
       }
 
-      draw() {
-        if (!ctx) return
-        ctx.fillStyle = this.color
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fill()
+      draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
       }
     }
 
@@ -286,7 +285,7 @@ export default function PersonalDashboard() {
 
       for (const particle of particles) {
         if (canvas) {
-          particle.update();
+particle.update(canvas.width, canvas.height);
           particle.draw(ctx);
         }
       }
