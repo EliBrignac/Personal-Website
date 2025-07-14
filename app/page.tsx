@@ -73,12 +73,12 @@ export default function PersonalDashboard() {
   
   // Profile images array with full paths
   const profileImages = [
-    "/profile1.jpg",
-    "/profile5.jpg",
-    "/profile2.jpg",
-    "/profile3.jpg",
-    "/profile4.jpg",
-    "/profile6.jpg"
+    "/Profile1.jpg",
+    "/Profile5.jpg",
+    "/Profile2.jpg",
+    "/Profile3.jpg",
+    "/Profile4.jpg",
+    "/Profile6.jpg"
   ];
   
   // Image rotation with fade effect
