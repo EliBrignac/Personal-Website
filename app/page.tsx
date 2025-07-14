@@ -246,23 +246,23 @@ export default function PersonalDashboard() {
       speedY: number
       color: string
 
-      constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
-        this.size = Math.random() * 3 + 1
-        this.speedX = (Math.random() - 0.5) * 0.5
-        this.speedY = (Math.random() - 0.5) * 0.5
-        this.color = `rgba(${Math.floor(Math.random() * 100) + 100}, ${Math.floor(Math.random() * 100) + 150}, ${Math.floor(Math.random() * 55) + 200}, ${Math.random() * 0.5 + 0.2})`
+      constructor(width: number, height: number) {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.color = `rgba(${Math.floor(Math.random() * 100) + 100}, ${Math.floor(Math.random() * 100) + 150}, ${Math.floor(Math.random() * 55) + 200}, ${Math.random() * 0.5 + 0.2})`;
       }
 
-      update() {
-        this.x += this.speedX
-        this.y += this.speedY
+      update(width: number, height: number) {
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-        if (this.x > canvas.width) this.x = 0
-        if (this.x < 0) this.x = canvas.width
-        if (this.y > canvas.height) this.y = 0
-        if (this.y < 0) this.y = canvas.height
+        if (this.x > width) this.x = 0;
+        if (this.x < 0) this.x = width;
+        if (this.y > height) this.y = 0;
+        if (this.y < 0) this.y = height;
       }
 
       draw() {
@@ -274,8 +274,10 @@ export default function PersonalDashboard() {
       }
     }
 
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle())
+    for (let i = 0; i < 50; i++) {
+      if (canvas) {
+        particles.push(new Particle(canvas.width, canvas.height));
+      }
     }
 
     function animate() {
@@ -283,8 +285,10 @@ export default function PersonalDashboard() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       for (const particle of particles) {
-        particle.update()
-        particle.draw()
+        if (canvas) {
+          particle.update();
+          particle.draw(ctx);
+        }
       }
 
       requestAnimationFrame(animate)
