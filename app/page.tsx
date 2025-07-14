@@ -481,7 +481,14 @@ particle.update(canvas.width, canvas.height);
           </div>
 
           <div className="flex items-center space-x-6">
-
+            <div className="hidden md:flex items-center space-x-1 bg-slate-800/50 rounded-full px-3 py-1.5 border border-slate-700/50 backdrop-blur-sm">
+              <Search className="h-4 w-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search projects or posts..."
+                className="bg-transparent border-none focus:outline-none text-sm w-40 placeholder:text-slate-500"
+              />
+            </div>
 
             <div className="flex items-center space-x-3">
               {/* <TooltipProvider>
@@ -557,9 +564,9 @@ particle.update(canvas.width, canvas.height);
                             </div>
                           </div>
                         </div>
-                        <div className="absolute -bottom-1 -right-1 w-10 h-10 bg-green-500 rounded-full border-4 border-slate-900 flex items-center justify-center">
+                        {/* <div className="absolute -bottom-1 -right-1 w-10 h-10 bg-green-500 rounded-full border-4 border-slate-900 flex items-center justify-center">
                           <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-1">
                         Eli Brignac
@@ -567,9 +574,7 @@ particle.update(canvas.width, canvas.height);
                       
                       <div className="text-sm text-slate-400 mb-1">M.S. Data Science</div>
                       <div className="text-sm text-slate-400 mb-1">B.S. Computer Science</div>
-                      <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 text-xs">
-                        Looking for Work
-                      </Badge>
+
                     </div>
                   </div>
                   <div className="p-6">
@@ -2002,29 +2007,29 @@ function ProjectRow({
   link,
 }: { id: string; name: string; status: string; progress: number; lastUpdate: string; link: string }) {
   return (
-    <div className="grid grid-cols-12 items-center p-3 hover:bg-slate-800/30 transition-colors">
-      <div className="col-span-1">{id}</div>
-      <div className="col-span-4 font-medium text-slate-200">{name}</div>
-      <div className="col-span-2">{status}</div>
+    <div className="grid grid-cols-12 items-center p-2 hover:bg-slate-800/30 transition-colors text-xs sm:text-sm">
+      <div className="col-span-1 text-center">{id}</div>
+      <div className="col-span-4 font-medium text-slate-200 truncate pr-2">{name}</div>
+      <div className="col-span-2 truncate">{status}</div>
       <div className="col-span-2">
-        <div className="flex items-center space-x-2 ml-2">
+        <div className="flex items-center justify-center">
           {progress < 50 ? (
-            <Badge variant="outline" className="bg-slate-800/50 text-red-400 border-red-500/50 text-xs">
+            <Badge variant="outline" className="bg-slate-800/50 text-red-400 border-red-500/50 text-[10px] sm:text-xs px-1.5 py-0.5">
               {progress}%
             </Badge>
           ) : progress < 100 ? (
-            <Badge variant="outline" className="bg-slate-800/50 text-yellow-400 border-yellow-500/50 text-xs">
+            <Badge variant="outline" className="bg-slate-800/50 text-yellow-400 border-yellow-500/50 text-[10px] sm:text-xs px-1.5 py-0.5">
               {progress}%
             </Badge>
           ) : (
-            <Badge variant="outline" className="bg-slate-800/50 text-green-400 border-green-500/50 text-xs">
+            <Badge variant="outline" className="bg-slate-800/50 text-green-400 border-green-500/50 text-[10px] sm:text-xs px-1.5 py-0.5">
               {progress}%
             </Badge>
           )}
         </div>
       </div>
-      <div className="col-span-2">{lastUpdate}</div>
-      <div className="col-span-1">
+      <div className="col-span-2 text-center text-[10px] sm:text-xs">{lastUpdate}</div>
+      <div className="col-span-1 text-center">
         {link !== "N/A" ? (
           <a 
             href={link} 
