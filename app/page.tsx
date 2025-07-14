@@ -358,31 +358,32 @@ particle.update(canvas.width, canvas.height);
     return `${hoursLeft} hour${Number(hoursLeft) !== 1 ? 's' : ''} left in workday`;
   };
 
-  const getCaffeineStatus = () => {
+  const getCaffeineStatus = (): number => {
     const startHour = 7; // 9 AM
     const now = new Date();
     const currentHour = now.getHours() + now.getMinutes() / 60;
-  
+
     const elapsedHours = currentHour - startHour;
-  
+
     if (elapsedHours < 0) {
-      return "You haven’t had your caffeine yet ☕";
+      return 0; // No caffeine yet
     }
-  
+
     // Calculate remaining caffeine using exponential decay (half-life model)
     const halfLife = 5.5; // in hours
     const remainingFraction = Math.pow(0.5, elapsedHours / halfLife);
     const percentageRemaining = Math.round(remainingFraction * 10000) / 100; // round to 2 decimal places
-  
+
     if (percentageRemaining <= 1) {
-      return "Caffeine has mostly worn off 💤";
+      return 0; // Caffeine has worn off
     }
-  
+
     return percentageRemaining;
   };
   
   const getEnergyStatus = () => {
-    const energyLevel = Math.round(getCaffeineStatus() * 100 / 100) + 20.31;
+    const caffeineLevel = getCaffeineStatus();
+    const energyLevel = Math.min(100, Math.max(0, Math.round(caffeineLevel) + 20.31));
   
     if (energyLevel > 80) return "Excellent";
     if (energyLevel > 60) return "Strong";
@@ -416,7 +417,7 @@ particle.update(canvas.width, canvas.height);
     },
     {
       name: 'Caffination',
-      level: getCaffeineStatus().toFixed(2),
+      level: getCaffeineStatus().toFixed(2).toString(),
       description: "Morning Cup at 9:00 AM",
       color: 'bg-cyan-500'
     },
@@ -428,13 +429,13 @@ particle.update(canvas.width, canvas.height);
     },
     {
       name: 'Stress Level',
-      level: (getCaffeineStatus() / 6.5).toFixed(2)  ,
+      level: (getCaffeineStatus() / 6.5).toFixed(2),
       description: 'Low',
       color: 'bg-green-500'
     },
     {
       name: 'Energy Remaining',
-      level: Math.round(getCaffeineStatus() * 100 / 100) + 20.31,
+      level: Math.min(100, Math.round(getCaffeineStatus()) + 20.31),
       description: getEnergyStatus(),
       color: 'bg-amber-500'
     },
