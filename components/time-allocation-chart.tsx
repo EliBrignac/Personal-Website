@@ -111,6 +111,7 @@ export function TimeAllocationChart() {
               dataKey="value"
               label={renderCustomizedLabel}
               labelLine={false}
+              isAnimationActive={false}
               className="outline-none"
             >
               {data.map((entry, index) => (

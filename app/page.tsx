@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, ReactNode } from "react"
 import {
   Activity,
   BarChart3,
@@ -74,10 +74,10 @@ export default function PersonalDashboard() {
   // Profile images array with full paths
   const profileImages = [
     "/Profile1.jpg",
+    "/Profile4.jpg",
     "/Profile5.jpg",
     "/Profile2.jpg",
     "/Profile3.jpg",
-    "/Profile4.jpg",
     "/Profile6.jpg"
   ];
   
@@ -151,7 +151,7 @@ export default function PersonalDashboard() {
         "Worked on hydrogen workforce analytics, using clustering and data visualization techniques to inform policy recommendations.",
       technologies: ["Python", "PostgreSQL", "AWS", "Tableau", "LLMs"],
       achievements: [
-        "Clustered 20+ documents worth of text into 26 unique categories using hierarchical clustering, K-means, and LLMs",
+        "Clustered text from 20+ documents into 26 unique categories using hierarchical clustering, K-means, and LLMs",
         "Built a PostgreSQL database on AWS to store and query hydrogen workforce report data",
         "Presented skill mappings and workforce recommendations to Delaware state senators"
       ],
@@ -169,7 +169,7 @@ export default function PersonalDashboard() {
       achievements: [
         "Built a retrieval-augmented generation (RAG) pipeline using LangChain for Alzheimer’s text extraction, supported by a $100K AWS Health Equity Initiative grant",
         "Implemented 2D skeleton extraction and optical flow to analyze 1,315 video segments for autism therapy research",
-        "Contributed to MMASD dataset published at ACM-ICMI’23 (14 citations, 421+ downloads)"
+        "Contributed to MMASD dataset published at ACM-ICMI'23 (14 citations, 421+ downloads)"
       ],
     },
     {
@@ -455,7 +455,7 @@ particle.update(canvas.width, canvas.height);
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-30" />
 
       {/* Loading overlay */}
-      {isLoading && (
+      {/* {isLoading && (
         <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-50">
           <div className="flex flex-col items-center">
             <div className="relative w-24 h-24">
@@ -468,7 +468,7 @@ particle.update(canvas.width, canvas.height);
             <div className="mt-4 text-cyan-500 font-mono text-sm tracking-wider">LOADING PERSONAL MATRIX</div>
           </div>
         </div>
-      )}
+      )} */}
 
       <div className="container mx-auto p-4 relative z-10">
         {/* Header */}
@@ -585,7 +585,7 @@ particle.update(canvas.width, canvas.height);
 
                     <div className="text-sm text-slate-300 leading-relaxed mb-4">
                       Recent Graduate from the University of Delaware who is passionate about contributing
-                      to the worlds most interesting problems. Strong background in Data Science and Machine Learning.
+                      to the world's most interesting problems. Strong background in Data Science and Machine Learning.
                     </div>
                     <div className="text-sm text-slate-400 leading-relaxed mb-4">
                       Always eager to learn new technologies and collaborate with others :)
@@ -868,8 +868,14 @@ particle.update(canvas.width, canvas.height);
                         </div>
                         <div className="h-2 w-full bg-slate-700/50 rounded-full overflow-hidden">
                           <div 
-                            className={`h-full ${effect.color} transition-all duration-1000 ease-out`}
-                            style={{ width: `${effect.level}%` }}
+                            className={`h-full ${effect.color} transition-all duration-1000 ease-out animate-fill`}
+                            style={{
+                              width: `${effect.level}%`,
+                              animation: `fillAnimation 1.75s ease-out forwards`,
+                              transform: 'scaleX(0)',
+                              transformOrigin: 'left',
+                              animationDelay: `${index * 0.1}s`
+                            }}
                           />
                         </div>
                         <p className="mt-2 text-xs text-slate-400">{effect.description}</p>
@@ -1161,19 +1167,25 @@ particle.update(canvas.width, canvas.height);
                           </h3>
                         </div>
                           <div className="grid grid-cols-1 md:grid-cols-1 gap-4 ml-4 mr-4">         
-                          <MyStatusItem label="Python" value={100} color="cyan" />
-                          <MyStatusItem label="SQL" value={89} color="purple" />
-                          <MyStatusItem label="PyTorch" value={87} color="pink" />
-                          <MyStatusItem label="Scikit-learn" value={95} color="rose" />
-                          <MyStatusItem label="Pandas" value={95} color="green" />
-                          <MyStatusItem label="NumPy" value={90} color="amber" />
-                          <MyStatusItem label="Git" value={99} color="blue" />
-                          <MyStatusItem label="Tableau" value={78} color="cyan" />
-                          <MyStatusItem label="C++" value={69} color="purple" />
-                          <MyStatusItem label="Java" value={63} color="amber" />
-                          <MyStatusItem label="Slurm" value={47} color="rose" />
-                          <MyStatusItem label="Matplotlib" value={100} color="green" />
-                          <MyStatusItem label="LangChain" value={74} color="cyan" />
+                            {[
+                              { label: "Python", value: 100, color: "cyan" },
+                              { label: "SQL", value: 89, color: "purple" },
+                              { label: "PyTorch", value: 87, color: "pink" },
+                              { label: "Scikit-learn", value: 95, color: "rose" },
+                              { label: "Pandas", value: 95, color: "green" },
+                              { label: "NumPy", value: 90, color: "amber" },
+                              { label: "Git", value: 99, color: "blue" },
+                              { label: "Tableau", value: 78, color: "cyan" },
+                              { label: "C++", value: 69, color: "purple" },
+                              { label: "Java", value: 63, color: "amber" },
+                              { label: "Slurm", value: 47, color: "rose" },
+                              { label: "Matplotlib", value: 100, color: "green" },
+                              { label: "LangChain", value: 74, color: "cyan" }
+                            ].map((item, index) => (
+                              <AnimatedItem key={item.label} delay={index * 100}>
+                                <MyStatusItem label={item.label} value={item.value} color={item.color} />
+                              </AnimatedItem>
+                            ))}
 {/*                                       
                             <TechnologyItem name="Python" experience="5 yrs" proficiency={100} color="bg-gradient-to-r from-cyan-500 to-cyan-500" />
                             <TechnologyItem name="SQL" experience="2 yrs" proficiency={89} color="bg-purple-500" />
@@ -1447,6 +1459,31 @@ particle.update(canvas.width, canvas.height);
     </div>
   )
 }
+
+// Component for animating items with staggered delay
+const AnimatedItem = ({ children, delay = 0 }: { children: ReactNode; delay?: number }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, delay);
+    
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  return (
+    <div 
+      className={`transition-all duration-500 ease-out transform ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 -translate-y-2'
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
 
 // Component for nav items
 function NavItem({ icon: Icon, label, active }: { icon: any; label: string; active?: boolean }) {
